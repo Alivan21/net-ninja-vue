@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Favorites</title>
+    <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <style>
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      li.book-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+      }
+      .book-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .card-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <main class="container">
+        <h1>Book Favorites</h1>
+        <div v-if="showBooks">
+          <h2>Books</h2>
+          <ul>
+            <li class="book-card" v-for="book in books" :key="book.id">
+              <img class="card-img" :src="book.img" alt="Book Cover" />
+              <span> {{ book.title }} by {{ book.author }} </span>
+              <button @click="toogleIsFav(book)">
+                {{ book.isFav ? "Remove from Favorites" : "Add to Favorites" }}
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2>Favorites</h2>
+          <ul>
+            <li class="book-card" v-for="book in favBooks" :key="book.id">
+              <img class="card-img" :src="book.img" alt="Book Cover" />
+              <span> {{ book.title }} by {{ book.author }} </span>
+              <button @click="toogleIsFav(book)">
+                {{ book.isFav ? "Remove from Favorites" : "Add to Favorites" }}
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button @click="toogleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+          </button>
+        </div>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

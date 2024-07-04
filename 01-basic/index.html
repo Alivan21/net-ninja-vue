@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Basic</title>
     <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background-color: #f1f1f1;
+        margin: 20px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello World</h1>
     <div id="app">
       <div v-if="showBooks">
-        <p>{{ title }} - {{author}} - {{age}}</p>
-        <button v-on:click="age++">Increase Age</button>
-        <button @click="age--">Decrease Age</button>
-        <button @click="changeTitle">Change title</button>
+        <h2>Books</h2>
+        <ul>
+          <li v-for="book in books" :key="book.id">
+            {{ book.title }} by {{ book.author }} ({{ book.age }})
+          </li>
+        </ul>
       </div>
       <div>
         <button @click="toogleShowBooks">
@@ -22,6 +34,13 @@
         </button>
       </div>
       <div v-show="showBooks">Currenly showing books</div>
+      <br />
+      <hr />
+      <!-- mouse event -->
+      <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
+      <div class="box" @mouseleave="handleEvent">mouseleave (leave)</div>
+      <div class="box" @dblclick="handleEvent">double click</div>
+      <div class="box"></div>
     </div>
     <script src="app.js"></script>
   </body>

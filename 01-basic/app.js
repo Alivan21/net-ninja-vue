@@ -4,9 +4,11 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: true,
-      title: "The Final Empire",
-      author: "Brandon Sanderson",
-      age: 55,
+      books: [
+        { title: "Name of the Wind", author: "Patrick Rothfuss", age: 45 },
+        { title: "The Final Empire", author: "Brandon Sanderson", age: 42 },
+        { title: "The Hero of Ages", author: "Brandon Sanderson", age: 42 },
+      ],
     };
   },
   methods: {
@@ -15,6 +17,9 @@ const app = Vue.createApp({
     },
     toogleShowBooks() {
       this.showBooks = !this.showBooks;
+    },
+    handleEvent(e) {
+      console.log(e);
     },
   },
 });
